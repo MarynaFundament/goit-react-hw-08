@@ -1,72 +1,79 @@
-import { Formik, Form, Field, ErrorMessage } from "formik"
-import * as Yup from 'yup';
-import { nanoid } from 'nanoid'
+import { useSelector, useDispatch } from 'react-redux';
 
-import styles from "./form.module.css"
-import { useDispatch } from "react-redux"
-import { addContact } from "../../redux/contactsOps"
+import PropTypes from 'prop-types';
 
-const initialFormData = {
-    name: "",
-    number: "",
-    id: nanoid()
-   }
+import { selectContactsList } from '../../redux/constacts/selectors';
+import { addContact } from '../../redux/constacts/operations';
 
+import { Form, Input, Label, Button, AddUserIcon } from './ContactForm.module';
+import { Notify } from 'notiflix';
 
-const UserSchema = Yup.object().shape({
-    name: Yup.string()
-    .min(3, "Too short!")
-    .max(50, "Too long!")
-    .required("Name is required"), 
+export const ContactForm = ({ onCloseModal }) => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContactsList);
 
-    number: Yup.string()
-    .min(3, "Too short!")
-    .max(50, "Too long!")
-    .required("Number id required"), 
-})
+  const handleSubmit = e => {
+    e.preventDefault();
 
+    const form = e.target;
+    const formName = e.target.elements.name.value;
+    const formNumber = e.target.elements.number.value;
+    if (contacts.some(({ name }) => name === formName)) {
+      return alert(`${formName} is already in contacts`);
+    }
 
-const ContactForm = () => {
+    if (contacts.some(({ number }) => number === formNumber)) {
+      return alert(`${formNumber} is already in contacts`);
+    }
 
-const dispatch = useDispatch()
-    
-const handleSubmit = (e, { resetForm }) => {
+    dispatch(addContact({ name: formName, number: formNumber.toString() }))
+      .unwrap()
+      .then(originalPromiseResult => {
+        Notify.success(
+          `${originalPromiseResult.name} successfully added to contacts`
+        );
+      })
+      .catch(() => {
+        Notify.failure("Sorry, something's wrong");
+      });
 
-    const newObj = {
-        name: e.name, 
-        number: e.number, 
-      };
-      dispatch(addContact(newObj));
+    onCloseModal();
+    form.reset();
+  };
 
-    resetForm()
-}
+  return (
+    <Form onSubmit={handleSubmit} autoComplete="off">
+      <Label>
+        Name
+        <Input
+          type="text"
+          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+          placeholder="Enter name ..."
+          value={contacts.name}
+        />
+      </Label>
+      <Label>
+        Number
+        <Input
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          placeholder="Enter number ..."
+          value={contacts.number}
+        />
+      </Label>
+      <Button type="submit">
+        <AddUserIcon />
+        New contact
+      </Button>
+    </Form>
+  );
+};
 
-    return (
-        <Formik 
-        initialValues = {initialFormData}
-        validationSchema = {UserSchema}
-        onSubmit = {handleSubmit} >
-
-           <Form> 
-            <div className={styles.element}>
-                <label htmlFor="name"> Name </label>
-                <Field className={styles.field} type="text" name="name"></Field>
-                <ErrorMessage name="name"/>
-               
-            </div>
-
-            <div className={styles.element}>
-                <label htmlFor="number"> Number </label>
-                <Field className={styles.field} type="text" name="number"></Field> 
-                <ErrorMessage name="number"/>
-
-            </div>
-                 
-            <button type="submit"> Add contact </button>
-            </Form>
-        </Formik>
-    )
-}
-
-
-export default ContactForm
+ContactForm.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
+};

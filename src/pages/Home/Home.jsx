@@ -1,5 +1,5 @@
-import { Section } from 'components/Section/Section';
-import { ContentPageContainer } from './Home.module';
+import { Section } from '../../components/Section/Section';
+import { ContentPageContainer } from '../Home/Home.module';
 
 const Home = () => {
   return (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchContacts } from 'redux/constacts/operations';
-import { selectError, selectIsLoading } from 'redux/constacts/selectors';
+import { fetchContacts } from '../../redux/constacts/operations';
+import { selectError, selectIsLoading } from '../../redux/constacts/selectors';
 
 import { Section } from '../../components/Section/Section';
 import { ContactForm } from '../../components/ContactForm/ContactForm';
@@ -16,7 +16,7 @@ import {
   FilterWrapper,
   Title,
 } from './Contacts.module';
-import { Modal } from 'components/Modal/Modal';
+import { Modal } from '../../components/Modal/Modal';
 
 const Contacts = () => {
   const dispatch = useDispatch();
