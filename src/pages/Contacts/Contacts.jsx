@@ -49,14 +49,11 @@ const Contacts = () => {
         <ContactList />
       </Section>
       {isShowModalAddUser && (
-        <Modal
-          children={
-            <Section title="Add New Contact">
-              <ContactForm onCloseModal={handleOpenModal} />
-            </Section>
-          }
-          onCloseModal={handleOpenModal}
-        ></Modal>
+        <Modal onCloseModal={handleOpenModal}>
+        <Section title="Add New Contact">
+          <ContactForm onCloseModal={handleOpenModal} />
+        </Section>
+      </Modal>
       )}
     </ContentPageContainer>
   );
