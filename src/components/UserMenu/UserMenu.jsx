@@ -1,10 +1,9 @@
 import { useDispatch } from 'react-redux';
 import {
   LogOutBtn,
-  UserAvatar,
   UserEmail,
   UserName,
-  UserNavigarion,
+  UserNavigation,
   UserWrapper,
 } from './UserMenu.module';
 import { logOut } from '../../redux/auth/operations';
@@ -15,18 +14,19 @@ const UserMenu = () => {
   const { user } = useAuth();
 
   return (
-    <UserNavigarion>
+    <UserNavigation>
       <UserWrapper>
         <div>
-          <UserName>{user.name}</UserName>
+          
+          <UserName>Welcome, {user.name}</UserName>
           <UserEmail>{user.email}</UserEmail>
         </div>
-        <UserAvatar></UserAvatar>
+  
       </UserWrapper>
       <LogOutBtn type="button" onClick={() => dispatch(logOut())}>
         LogOut
       </LogOutBtn>
-    </UserNavigarion>
+    </UserNavigation>
   );
 };
 

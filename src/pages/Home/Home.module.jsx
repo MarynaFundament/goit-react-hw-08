@@ -1,9 +1,6 @@
-import styled from '@emotion/styled';
+import { styled } from '@mui/system';
 
-export const ContentPageContainer = styled.div`
-  padding: 38px 48px;
-  height: 100dvb;
-
-  border-radius: 32px 32px 0 0;
-  background-color: #f9f9f9;
-`;
+export const ContentPageContainer = styled('div')({
+  padding: '100px 50px',
+  backgroundColor: '#f9f9f9',
+});

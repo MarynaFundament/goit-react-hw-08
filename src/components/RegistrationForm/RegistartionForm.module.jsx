@@ -29,7 +29,7 @@ export const Input = styled('input')({
   transition: 'border 250ms cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover, &:focus': {
     border: '1px solid #03b6fc',
-    },
+  },
 });
 
 export const Button = styled('button')({
@@ -45,7 +45,7 @@ export const Button = styled('button')({
   '&:hover, &:focus': {
     color: '#03b6fc',
     backgroundColor: 'rgba(250, 187, 24, 0.1)',
-  
+    
   },
 });
 

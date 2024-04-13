@@ -1,55 +1,50 @@
-import styled from '@emotion/styled';
+import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
 
 export const Logo = styled(NavLink)`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 800;
-  font-size: 36px;
+  display: block;
+  text-decoration: none;
 
-  margin-right: 114px;
-
-  color: #000000;
-  > span {
-    color: #fabb18;
-
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  :hover,
-  :focus {
-    color: #fabb18;
-    > span {
-      color: #000000;
-    }
-  }
-`;
-
-export const MainNav = styled.nav``;
-export const MainNavList = styled.ul``;
-export const MainNavItem = styled.li``;
-export const MainNavLink = styled(NavLink)`
-  font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
 
-  padding: 22px 28px;
-
-  color: #000000;
-  background-color: #ffffff;
-  border-radius: 18px;
-
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: font-weight 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  :hover,
-  :focus {
-    font-weight: 600;
-
-    color: #ffffff;
-    background-color: #000000;
+  padding: 22px 28px; 
+  border: 1px solid #03b6fc; 
+  border-radius: 14px;
+  color: black;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover,
+  &:focus {
+    color: #03b6fc;
+    background-color: rgba(250, 187, 24, 0.1); 
   }
 `;
+
+export const MainNav = styled('nav')``;
+export const MainNavList = styled('ul')`
+list-style:none`;
+export const MainNavItem = styled('li')``;
+export const MainNavLink = styled(NavLink)`
+display: block;
+text-decoration: none;
+
+
+font-weight: 600;
+font-size: 18px;
+
+padding: 22px 28px; 
+border: 1px solid #03b6fc; 
+border-radius: 14px;
+color: black;
+transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+&:hover,
+&:focus {
+  color: #03b6fc;
+  background-color: rgba(250, 187, 24, 0.1); 
+}
+`;
+
+
+

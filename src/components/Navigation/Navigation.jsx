@@ -13,7 +13,7 @@ const Navigation = () => {
   return (
     <>
       <Logo to="/">
-        Phone<span>Book.</span>
+        Home
       </Logo>
       <MainNav>
         {isLoggedIn && (

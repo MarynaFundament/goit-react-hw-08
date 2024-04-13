@@ -1,32 +1,30 @@
-import styled from '@emotion/styled';
+import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
 
+export const LoggedList = styled('ul')({
+  display: 'flex',
+  gap: '8px',
+  marginLeft: 'auto',
+  listStyle: 'none',
 
-export const LoggedList = styled.ul`
-  display: flex;
-  gap: 8px;
+});
 
-  margin-left: auto;
-`;
-export const LoggedItem = styled.li``;
-export const LoggedLink = styled(NavLink)`
-  display: block;
-  font-weight: 600;
-  font-size: 18px;
+export const LoggedItem = styled('li')({});
 
-  padding: 22px 28px;
+export const LoggedLink = styled(NavLink)({
+  textDecoration: 'none',
 
-  color: #ffffff;
-  background-color: #000000;
-
-  border-radius: 14px;
-
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  :hover,
-  :focus {
-    color: #000000;
-    background-color: rgba(250, 187, 24, 0.1);
-  }
-`;
+  display: 'block',
+  fontWeight: 600,
+  fontSize: '18px',
+  padding: '22px 28px',
+  color: '#000000',
+  border: '1px solid #03b6fc', 
+  borderRadius: '14px',
+  transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+  
+  '&:hover, &:focus': {
+    color: '#03b6fc',
+    backgroundColor: 'rgba(250, 187, 24, 0.1)',
+  },
+});

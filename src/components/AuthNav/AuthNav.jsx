@@ -3,11 +3,13 @@ import { LoggedItem, LoggedLink, LoggedList } from './AuthNav.module';
 const LoggedNav = () => {
   return (
     <LoggedList>
+    
       <LoggedItem>
-        <LoggedLink to="login">LogIn</LoggedLink>
+        <LoggedLink to="/register">Register</LoggedLink>
       </LoggedItem>
+
       <LoggedItem>
-        <LoggedLink to="register">Register</LoggedLink>
+        <LoggedLink to="/login">LogIn</LoggedLink>
       </LoggedItem>
     </LoggedList>
   );
