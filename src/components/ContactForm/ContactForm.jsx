@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
-import { selectContactsList } from '../../redux/constacts/selectors';
-import { addContact } from '../../redux/constacts/operations';
+import { selectContactsList } from '../../redux/contacts/selectors';
+import { addContact } from '../../redux/contacts/operations';
 
 import { Form, Input, Label, Button, AddUserIcon } from './ContactForm.module';
 import { Notify } from 'notiflix';
