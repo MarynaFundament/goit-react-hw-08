@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchContacts } from '../../redux/contacts/operations';
-import { selectError, selectIsLoading } from '../../redux/contacts/selectors';
+import { fetchContacts } from '../redux/contacts/operations';
+import { selectError, selectIsLoading } from '../redux/contacts/selectors';
 
-import { Section } from '../../components/Section/Section';
-import { ContactForm } from '../../components/ContactForm/ContactForm';
-import { Filter } from '../../components/Filter/Filter';
-import { ContactList } from '../../components/ContactList/ContactList';
+import { Section } from '../components/Section/Section';
+import { ContactForm } from '../components/ContactForm/ContactForm';
+import { Filter } from '../components/Filter/Filter';
+import { ContactList } from '../components/ContactList/ContactList';
 import {
   AddUserIcon,
   Button,
@@ -16,7 +16,7 @@ import {
   FilterWrapper,
   Title,
 } from './Contacts.module';
-import { Modal } from '../../components/Modal/Modal';
+import { Modal } from '../components/Modal/Modal';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -33,6 +33,8 @@ const Contacts = () => {
   };
 
   return (
+
+   
     <ContentPageContainer>
       <Section>
         <ContactNavWrapper>
@@ -55,7 +57,8 @@ const Contacts = () => {
         </Section>
       </Modal>
       )}
-    </ContentPageContainer>
+     
+     </ContentPageContainer>
   );
 };
 

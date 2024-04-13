@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setContactsFilter } from '../../redux/filters/slice';
-import { selectContactsFilter } from '../../redux/filters/selectors';
+import { selectNameFilter } from '../../redux/filters/selectors';
 
 import { Label, Input } from './Filter.module';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectContactsFilter);
+  const filter = useSelector(selectNameFilter);
 
   const handleChangeFilter = ({ currentTarget: { value } }) => {
     const normalizedValue = value.toLowerCase().trim();
